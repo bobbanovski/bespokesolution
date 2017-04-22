@@ -10,9 +10,10 @@ def create_app(**config_overrides): #** allows unit tester to override
     
     #import views
     from home.views import home_app
+    from rba.views import rba_app
     
     #import blueprints
     app.register_blueprint(home_app)
-    
+    app.register_blueprint(rba_app)
     
     return app
