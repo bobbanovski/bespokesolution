@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>{% block title %} {% endblock %} - Cloud Flask</title>
+        
+        <!-- Latest compiled and minified Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
+        
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    
+        {% block header %} {% endblock %}
+    </head>
+    
+    <body>
+        <div class="container">
+            {% block content %} {% endblock %}
+        </div>
+        
+        <footer class="col-md-offset-3 col-md-6">
+            {% block footer %}
+            <br /> <hr />
+            &copy; Copyright 2017 Cloud Archipelago
+            {% endblock %}
+        </footer>
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        {% block endBodyJs %}
+        
+        {% endblock %}
+    </body>
+    
+</html>
