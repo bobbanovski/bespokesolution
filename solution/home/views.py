@@ -13,9 +13,6 @@ home_app = Blueprint('home_app', __name__)
 @home_app.route('/')
 def home():
     
-    # x = [1,2,3,4,5]
-    # y = [6,7,8,9,10]
-    
     data1 = pd.read_excel("http://www.rba.gov.au/statistics/tables/xls-hist/f16hist-2009-2015.xls")[[0, 8]]
     data1 = data1.iloc[10:]
     data1.columns = ["Date", "FCMYJUN14D"]
