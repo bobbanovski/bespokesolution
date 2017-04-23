@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}Your Bespoke Solution{% endblock %}
+{% block header %}
+  <link rel="stylesheet" href={{cdn_css|safe}} type="text/css" />
+  <script type="text/javascript" src={{cdn_js|safe}}></script>
+{% endblock %}
 
 {% block content %}
 
@@ -13,9 +17,15 @@
       <div class="container">
         <img src="{{ url_for('static', filename='assets/Bespoke.JPG') }}" width="400" class="center-block"/>
         <h1>Your bespoke solution, in the cloud</h1>
+        <div>
+          {{js|safe}}
+          {{div|safe}}
+        </div>
         <p>No matter where you are in the world, you can always calculate in the cloud</p>
+        <p>the GET api can be found at ec2-52-62-177-34.ap-southeast-2.compute.amazonaws.com/rba</p>
       </div>
     </div>
+    
 </div>
 
 {% endblock %}
