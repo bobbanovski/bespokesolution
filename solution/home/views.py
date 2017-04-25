@@ -7,6 +7,7 @@ from bokeh.plotting import figure
 from bokeh.io import output_file, show
 from bokeh.embed import components
 from bokeh.resources import CDN
+from bokeh.models import HoverTool, ColumnDataSource
 
 home_app = Blueprint('home_app', __name__)
 
@@ -26,10 +27,34 @@ def home():
     x=result["Date"]
     y=result["FCMYJUN14D"]
     
-    f = figure()
-    f.line(x,y)
-    js,div = components(f)
+    data=dict(
+            date=[x.strftime("%d-%m-%Y") for x in result['Date']],
+            rate=result['FCMYJUN14D']
+        )
     
+    #implement hover tooltip
+    hover = HoverTool(
+        tooltips=[
+            ("(day,rate)", "(@date, $y %)")
+        ]
+    )
+    
+    f = figure(x_axis_type="datetime", tools="pan,wheel_zoom,box_zoom,reset", plot_width=1000)
+    f.add_tools(hover)
+    f.line(x,y, source = data)
+    
+    #format plot
+    f.title.text="Effective Annual Yield Time Series"
+    f.title.text_font="times"
+    f.title.text_font_size="44px"
+    f.title.align="center"
+    
+    f.xaxis.axis_label = "Year"
+    f.yaxis.axis_label = "Semi annual yield %"
+    
+    #extract javascript and html from the figure to pass to view
+    js,div = components(f)
+    #get js and css using inbuilt cdn methods
     cdn_js = CDN.js_files[0]
     cdn_css = CDN.css_files[0]
     
