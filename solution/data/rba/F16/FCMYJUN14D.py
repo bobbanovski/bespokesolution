@@ -11,5 +11,4 @@ data2.columns = ["Date", "FCMYJUN14D"]
 
 #join dataframes from 2 excel sheets and drop rows with null values
 frames = [data1, data2]
-
 compiledData = pd.concat(frames).dropna()

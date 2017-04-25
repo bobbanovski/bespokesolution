@@ -15,7 +15,6 @@ home_app = Blueprint('home_app', __name__)
 
 @home_app.route('/')
 def home():
-    # result = compiledData
     x=compiledData["Date"]
     y=compiledData["FCMYJUN14D"]
     
