@@ -9,8 +9,7 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 from bokeh.models import HoverTool, ColumnDataSource
 
-# from data.rba.F16.FCMYJUN14D import compiledData
-from FCMYJUN14D import compiledData
+from data.rba.F16.FCMYJUN14D import compiledData
 
 home_app = Blueprint('home_app', __name__)
 
