@@ -9,27 +9,19 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 from bokeh.models import HoverTool, ColumnDataSource
 
+from data.rba.F16.FCMYJUN14D import compiledData
+
 home_app = Blueprint('home_app', __name__)
 
 @home_app.route('/')
 def home():
-    
-    data1 = pd.read_excel("http://www.rba.gov.au/statistics/tables/xls-hist/f16hist-2009-2015.xls")[[0, 8]]
-    data1 = data1.iloc[10:]
-    data1.columns = ["Date", "FCMYJUN14D"]
-    data2 = pd.read_excel("http://www.rba.gov.au/statistics/tables/xls-hist/f16hist-2009-2015.xls", sheetname = 1)[[0,2]]
-    data2 = data2.iloc[10:]
-    data2.columns = ["Date", "FCMYJUN14D"]
-    
-    #join dataframes from 2 excel sheets and drop rows with null values
-    frames = [data1, data2]
-    result = pd.concat(frames).dropna()
-    x=result["Date"]
-    y=result["FCMYJUN14D"]
+    # result = compiledData
+    x=compiledData["Date"]
+    y=compiledData["FCMYJUN14D"]
     
     data=dict(
-            date=[x.strftime("%d-%m-%Y") for x in result['Date']],
-            rate=result['FCMYJUN14D']
+            date=[x.strftime("%d-%m-%Y") for x in compiledData['Date']],
+            rate=compiledData['FCMYJUN14D']
         )
     
     #implement hover tooltip
