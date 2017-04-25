@@ -14,7 +14,7 @@ class rbaApi(MethodView):
     
     #join dataframes from 2 excel sheets and drop rows with null values
     frames = [data1, data2]
-    result = pd.concat(frames).dropna().to_json(orient='records')
+    result = pd.concat(frames).dropna().to_json(orient='values',date_unit="s",date_format="epoch")
     
     def get(self):
         return jsonify({"data": self.result})
