@@ -11,12 +11,12 @@ manager.add_command("runserver", Server(
     use_reloader = True,
     
     #Cloud9 settings
-    # host = os.getenv('IP', '0.0.0.0'),
-    # port = int(os.getenv('PORT', 80))
+    host = os.getenv('IP', '0.0.0.0'),
+    port = int(os.getenv('PORT', 80))
     
     #Local settings
-    host = '0,0,0,0',
-    port = 80
+    # host = '0,0,0,0',
+    # port = 80
     )
 )
 
